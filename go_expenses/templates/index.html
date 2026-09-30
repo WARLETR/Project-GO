@@ -1,0 +1,42 @@
+{{define "content"}}
+<h2>Список моих расходов</h2>
+
+<!-- Таблица для вывода трат -->
+<table>
+    <thead>
+        <tr>
+            <th>Сумма (руб.)</th>
+            <th>Описание</th>
+            <th>Дата</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{range .}}
+        <tr>
+            <td><strong>{{.Amount}}</strong></td>
+            <td>{{.Description}}</td>
+            <td>{{.Date}}</td>
+        </tr>
+        {{else}}
+        <tr>
+            <td colspan="3" style="text-align: center; color: gray;">Трат пока нет. Добавьте первую!</td>
+        </tr>
+        {{end}}
+    </tbody>
+</table>
+
+<h2>Добавить новый расход</h2>
+
+<form action="/" method="POST">
+    <label>Сумма:</label>
+    <input type="number" name="amount" required placeholder="Например, 500">
+    
+    <label>Описание:</label>
+    <input type="text" name="description" required placeholder="Например, Продукты">
+    
+    <label>Дата:</label>
+    <input type="date" name="date" required>
+    
+    <button type="submit">Сохранить трату</button>
+</form>
+{{end}}
