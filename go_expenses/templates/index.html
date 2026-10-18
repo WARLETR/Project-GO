@@ -1,13 +1,12 @@
 {{define "content"}}
 <h2>Список моих расходов</h2>
-
-<!-- Таблица для вывода трат -->
 <table>
     <thead>
         <tr>
             <th>Сумма (руб.)</th>
             <th>Описание</th>
             <th>Дата</th>
+            <th>Действия</th>
         </tr>
     </thead>
     <tbody>
@@ -16,6 +15,10 @@
             <td><strong>{{.Amount}}</strong></td>
             <td>{{.Description}}</td>
             <td>{{.Date}}</td>
+            <td>
+                <a href="/edit?id={{.Id}}">Редактировать</a>
+                <a href="/delete?id={{.Id}}" onclick="return confirm('Точно удалить?')">Удалить</a>
+            </td>
         </tr>
         {{else}}
         <tr>

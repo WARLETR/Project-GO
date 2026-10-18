@@ -1,0 +1,19 @@
+{{define "content"}}
+<h2>Редактировать расход</h2>
+
+<form action="/edit" method="POST">
+    <!-- скрытое поле чтобы передать id записи -->
+    <input type="hidden" name="id" value="{{.Id}}">
+
+    <label>Сумма:</label>
+    <input type="number" name="amount" value="{{.Amount}}" required placeholder="Например, 500">
+    
+    <label>Описание:</label>
+    <input type="text" name="description" value="{{.Description}}" required placeholder="Например, Продукты">
+    
+    <label>Дата:</label>
+    <input type="date" name="date" required>
+    
+    <button type="submit">Сохранить</button>
+</form>
+{{end}}
