@@ -2,18 +2,26 @@
 <h2>Редактировать расход</h2>
 
 <form action="/edit" method="POST">
-    <!-- скрытое поле чтобы передать id записи -->
-    <input type="hidden" name="id" value="{{.Id}}">
+    <input type="hidden" name="id" value="{{.Exp.Id}}">
 
     <label>Сумма:</label>
-    <input type="number" name="amount" value="{{.Amount}}" required placeholder="Например, 500">
+    <input type="number" name="amount" value="{{.Exp.Amount}}" required>
     
+    <label>Категория:</label>
+    <select name="category_id" required>
+        {{range .Categories}}
+            <option value="{{.Id}}" {{if eq .Id $.Exp.CategoryId}}selected{{end}}>{{.Name}}</option>
+        {{end}}
+    </select>
+
     <label>Описание:</label>
-    <input type="text" name="description" value="{{.Description}}" required placeholder="Например, Продукты">
+    <input type="text" name="description" value="{{.Exp.Description}}" required>
     
     <label>Дата:</label>
-    <input type="date" name="date" required>
+    <input type="date" name="date" value="{{.Exp.Date}}" required>
     
     <button type="submit">Сохранить</button>
 </form>
+<br>
+<a href="/">Назад</a>
 {{end}}
